@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  app:
+    # Construir a imagem a partir do Dockerfile
+    build:
+      context: .
+      args:
+        # Passar as variáveis de ambiente como argumentos na construção da imagem
+      - TENANT_ID=${TENANT_ID}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - GROUP_ID=${GROUP_ID}
+    # Mapear o volume ./data na máquina host para o diretório /app/data no contêiner
+    volumes:
+      - ./data:/app/data

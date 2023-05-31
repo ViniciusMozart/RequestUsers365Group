@@ -6,10 +6,11 @@ WORKDIR /app
 
 # Copiar o script python para o diretório de trabalho
 COPY RequestUsers.py .
-COPY data .
+COPY requirements.txt .
+COPY data /app/data
 # Instalar os pacotes necessários usando o pip
 RUN pip install requests msal
-
+RUN pip install -r requirements.txt
 # Definir as variáveis de ambiente usando os argumentos passados na construção da imagem
 ARG TENANT_ID
 ARG CLIENT_ID
